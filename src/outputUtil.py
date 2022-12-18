@@ -9,13 +9,12 @@
 # printWorld関数で標準出力に出力された内容をすべて削除する関数
 # 引数world_sizeはindex0番目にworldのwidth,index1番目にworldのheightが入っている
 
-import doctest
-
 
 def printWorld(world:list):
     """
     """
-    print('\x1b[2J')    # ANSIエスケープコードによる画面全体の削除コード
+    print(f'\x1b[{len(world)+1}A') #カーソルを元の位置に戻す.ANSIエスケープコードを使用している
+
     for row in world:
         for b in row:
             if b == None:
@@ -24,9 +23,4 @@ def printWorld(world:list):
                 print('x',end='')
             else:
                 print('.',end='')
-        print('\n',end='')  # 冗長かもね
-
-    
-
-if __name__ == "__main__":
-    doctest.testmod()
+        print() # 改行のため
