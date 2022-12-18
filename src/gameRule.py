@@ -2,7 +2,6 @@
 # Author : Yoshiyuki Kurose
 
 from copy import deepcopy
-from random import choice
 
 # Game rules
 class GameOfLife:
