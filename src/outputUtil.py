@@ -5,10 +5,6 @@
 # worldの内容をCLIに表示する関数
 # 引数worldは2次元配列
 
-# - deleteWorldについて
-# printWorld関数で標準出力に出力された内容をすべて削除する関数
-# 引数world_sizeはindex0番目にworldのwidth,index1番目にworldのheightが入っている
-
 
 def printWorld(world:list):
     """
@@ -17,8 +13,8 @@ def printWorld(world:list):
 
     for row in world:
         for b in row:
-            if b == None:
-                raise ValueError("b must be bool value")
+            # if b == None:
+            #     raise ValueError("b must be bool value")
             if b:
                 print('x',end='')
             else:

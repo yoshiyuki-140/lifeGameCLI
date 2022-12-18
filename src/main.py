@@ -5,7 +5,17 @@ import time
 from outputUtil import printWorld
 
 def main():
-    generation = 10
+    generation = input("何世代まで見たい?\n> ")
+    if generation.isdecimal():
+        generation = int(generation)
+        if generation == 0:
+            print("0世代には世界がそもそも存在しないんだよね")
+    else:
+        print("ちょっと何言ってるかわからないです...")
+        print("とりあえず10世代まで見るね")
+        generation = 10
+
+    
     world_size = (10, 10)
     delay = 0.5
 

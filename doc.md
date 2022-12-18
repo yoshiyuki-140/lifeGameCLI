@@ -6,6 +6,7 @@ lifegame
 - 目標となる動作
     - lifegameというシュミレーションゲームをCLIで再現できるようにする。
     - 再現していることを示すため、lifegameの中で最も基本的で構造がシンプルな生命体であるGliderを動作させる.
+    - main.pyを実行すると上記のことがthonnyのシェル領域に出力される
 
 - 入出力に関して  
     - 入力
@@ -30,6 +31,14 @@ lifegame
                 - gR:  
                 これはGameOfLifeクラスのインスタンス
                     - 命名理由:gameRule.pyからGameOfLifeクラスを呼び出しているから gameRuleの省略 - gameRule.py
+            - 関数
+                - main
+                    - すること
+                        - どの世代まで観測したいかをプログラムの起動者に聞いて見て入力を促す、その時入力によって、出力する値を変化させる。この過程で、不正な入力を除去する
+                        - world_size,delay,gRなどの変数にそれぞれ、初期値を代入していく。
+                        - 画面をワールドの縦の大きさ分改行する。この意味は、thonny実行時には意味がないが、powershellやbashなどでは、outputUtilのANSIエスケープコード実行時に実行時のプロンプトを消さないという意味がある。
+                        - generation回だけoutputUtil.pyのprintWrold関数,gameRule.pyのGameOfLifeクラスのupdateメソッド,time.sleep()を各々呼び出して、順次画面とgRインスタンスのworld変数の中身を書き換えていく
+
         - gameRule.py
             - クラス
                 - GameOfLife:  
@@ -108,14 +117,20 @@ lifegame
                     - 引数:world(2次元の配列を格納している. list型)
                     - すること
                         - 呼び出されてからすぐにANSI文字コードでカーソルを元の位置に戻す。(これはthonnyでは機能しないがコードの説明に必要だと判断した)
-                        - 渡された配列の中身の要素を一つ一つ確認していき,中身がTrueなら文字列"x"を改行なしで出力しFalseなら文字列"."を改行なしで出力する。その際、worldの横幅の文字列数を文字列の大きさを単位として、nで表すと、n回上記の"x","."の文字列を出力するごとに改行を出力する
-
+                        - 渡された配列の中身の要素をfor構文で一つ一つ確認していき,中身がTrueなら文字列"x"を改行なしで出力しFalseなら文字列"."を改行なしで出力する。
 
 - 実行時の様子の説明
     - 実行時の画像
-    ![実行時の画像1](image1.png)
-    ![実行時の画像2](image2.png)
-    ![実行時の画像3](image3.png)
+        - image1
+        ![実行時の画像1](image1.png)
+        - image2
+        ![実行時の画像2](image2.png)
+        - image3
+        ![実行時の画像3](image3.png)
+    - 説明  
+    上の３つの画像は上から順番に実行してからどのように出力が変化するかを示している。
+    image1は実行直後で、この時プログラム側ではgameRule.pyの中のGameOfLifeクラスの中のcreateGriderメソッドによって一つグライダーが作られている状態。image2,image3はimage1が出力されてからそれぞれdelay秒後,2*delay秒後に出力される内容。ここでdelayはmain.pyの中のdelay変数を示している。
+
 
 
 - 参考文献
