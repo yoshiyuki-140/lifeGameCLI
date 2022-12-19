@@ -36,15 +36,18 @@ class GameOfLife:
         x,yはworldの中のy行x列の座標を表す
         x,yはこのメソッドが作成するべきグライダーの左上の座標を示している
         """
-        self.world[y+1][x+1] = True
-        self.world[y+1][x+2] = False
-        self.world[y+1][x+3] = True
-        self.world[y+2][x+1] = False
-        self.world[y+2][x+2] = True
-        self.world[y+2][x+3] = True
-        self.world[y+3][x+1] = False
-        self.world[y+3][x+2] = True
-        self.world[y+3][x+3] = False
+        try:
+            self.world[y+1][x+1] = True
+            self.world[y+1][x+2] = False
+            self.world[y+1][x+3] = True
+            self.world[y+2][x+1] = False
+            self.world[y+2][x+2] = True
+            self.world[y+2][x+3] = True
+            self.world[y+3][x+1] = False
+            self.world[y+3][x+2] = True
+            self.world[y+3][x+3] = False
+        except:
+            raise IndexError("引数に指定された座標に世界は存在しないみたいですYO!")
 
     def judge(self, x, y):
         """次の時代lifeならTrueを返すdeathならFalseをかえす
