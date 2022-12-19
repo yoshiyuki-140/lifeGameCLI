@@ -65,20 +65,11 @@ class GameOfLife:
         """
         count = 0
 
-        if self.world[(y-1) % self.world_size[1]][(x-1) % self.world_size[0]] == True:
-            count += 1
-        if self.world[(y-1) % self.world_size[1]][(x) % self.world_size[0]] == True:
-            count += 1
-        if self.world[(y-1) % self.world_size[1]][(x+1) % self.world_size[0]] == True:
-            count += 1
-        if self.world[(y) % self.world_size[1]][(x-1) % self.world_size[0]] == True:
-            count += 1
-        if self.world[(y) % self.world_size[1]][(x+1) % self.world_size[0]] == True:
-            count += 1
-        if self.world[(y+1) % self.world_size[1]][(x-1) % self.world_size[0]] == True:
-            count += 1
-        if self.world[(y+1) % self.world_size[1]][(x) % self.world_size[0]] == True:
-            count += 1
-        if self.world[(y+1) % self.world_size[1]][(x+1) % self.world_size[0]] == True:
-            count += 1
+        for yi in range(-1,2):
+            for xi in range(-1,2):
+                if 0 == xi and 0 == yi:
+                    continue
+                if self.world[(y+yi) % self.world_size[1]][(x+xi) % self.world_size[0]] == True:
+                    count += 1
+
         return count
