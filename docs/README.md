@@ -1,4 +1,4 @@
-# lifegame-rich-py
+# lifegame-py
 
 [![LANG](https://skillicons.dev/icons?i=py&theme=light)](https://skillicons.dev)
 
